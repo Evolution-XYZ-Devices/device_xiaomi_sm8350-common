@@ -42,4 +42,7 @@
         <item>268</item>
         <item>267</item>
     </integer-array>
+
+    <!-- Device specific doze package -->
+    <string name="config_customDozePackage" translatable="false">org.lineageos.settings/org.lineageos.settings.doze.DozeSettingsActivity</string>
 </resources>
