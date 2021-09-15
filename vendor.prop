@@ -261,7 +261,7 @@ persist.vendor.sensors.on_change_sample_period=true
 persist.vendor.sensors.sync_request=true
 
 # SoC
-ro.soc.manufacturer=Qualcomm
+ro.soc.manufacturer=QTI
 ro.soc.model=SM8350
 
 # Storage
