@@ -1,1 +1,5 @@
 dontaudit untrusted_app ashmem_device:chr_file open;
+
+dontaudit {
+  rild
+} default_prop:file r_file_perms;
