@@ -36,6 +36,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             Log.d(TAG, "Received boot completed intent");
         DozeUtils.onBootCompleted(context);
         ThermalUtils.startService(context);
-        RefreshUtils.startService(context);        
+        RefreshUtils.initialize(context);
     }
 }
