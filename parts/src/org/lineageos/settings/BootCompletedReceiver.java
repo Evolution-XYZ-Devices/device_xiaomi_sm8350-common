@@ -42,6 +42,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         }
         DozeUtils.onBootCompleted(context);
         ThermalUtils.startService(context);
-        RefreshUtils.startService(context);        
+        RefreshUtils.initialize(context);
     }
 }

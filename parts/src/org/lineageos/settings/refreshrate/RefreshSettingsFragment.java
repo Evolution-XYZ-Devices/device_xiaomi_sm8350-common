@@ -100,7 +100,6 @@ public class RefreshSettingsFragment extends PreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-        getActivity().setTitle(getResources().getString(R.string.refresh_title));
         rebuild();
     }
 
