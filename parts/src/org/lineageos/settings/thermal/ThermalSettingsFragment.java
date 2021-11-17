@@ -61,7 +61,6 @@ public class ThermalSettingsFragment extends PreferenceFragment
             new HashMap<String, ApplicationsState.AppEntry>();
 
     private RecyclerView mAppsRecyclerView;
-
     private ThermalUtils mThermalUtils;
 
     @Override
@@ -275,7 +274,6 @@ public class ThermalSettingsFragment extends PreferenceFragment
 
             view.setText(items[position]);
             view.setTextSize(14f);
-
             return view;
         }
     }
@@ -304,22 +302,20 @@ public class ThermalSettingsFragment extends PreferenceFragment
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            ViewHolder holder = new ViewHolder(LayoutInflater.from(parent.getContext())
+            return new ViewHolder(LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.thermal_list_item, parent, false));
-            Context context = holder.itemView.getContext();
-            holder.mode.setAdapter(new ModeAdapter(context));
-            holder.mode.setOnItemSelectedListener(this);
-            return holder;
         }
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
+            Context context = holder.itemView.getContext();
             ApplicationsState.AppEntry entry = mEntries.get(position);
-
             if (entry == null) {
                 return;
             }
 
+            holder.mode.setAdapter(new ModeAdapter(context));
+            holder.mode.setOnItemSelectedListener(this);
             holder.title.setText(entry.label);
             holder.title.setOnClickListener(v -> holder.mode.performClick());
             mApplicationsState.ensureIcon(entry);
