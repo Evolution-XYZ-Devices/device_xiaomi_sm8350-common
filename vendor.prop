@@ -164,6 +164,7 @@ vendor.gatekeeper.disable_spu=true
 # Graphics
 debug.egl.hw=0
 debug.mdpcomp.logs=0
+debug.renderengine.backend=skiaglthreaded
 debug.sf.disable_client_composition_cache=1
 debug.sf.enable_advanced_sf_phase_offset=1
 debug.sf.enable_gl_backpressure=1
