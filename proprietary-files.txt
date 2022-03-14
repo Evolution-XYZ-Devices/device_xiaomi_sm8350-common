@@ -221,6 +221,11 @@ vendor/lib64/libtinyxml2_1.so|11ceb3f1e7650c41621d47e5ec5567c8f466086e
 
 # Display calibration
 vendor/bin/qdcmss
+vendor/etc/display/DPU660.xml
+vendor/etc/display/DPU670.xml
+vendor/etc/display/DPU720.xml
+vendor/etc/display/DPU7__.xml
+vendor/etc/display/advanced_sf_offsets.xml
 vendor/etc/init/qdcmss.rc
 
 # Display postprocessing
