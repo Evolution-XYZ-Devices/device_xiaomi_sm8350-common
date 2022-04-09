@@ -130,6 +130,14 @@ on boot
     chown system system /dev/xiaomi-touch
     chmod 0660 /dev/xiaomi-touch
 
+    # Set anti-flicker mode permissions
+    chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/dimlayer_exposure
+    chmod 0660 /sys/devices/platform/soc/soc:qcom,dsi-display-primary/dimlayer_exposure
+
+    # Set high brightness mode permissions
+    chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/hbm_enabled
+    chmod 0660 /sys/devices/platform/soc/soc:qcom,dsi-display-primary/hbm_enabled
+
     write /dev/cpuset/audio-app/cpus 1-2
     # init the  cpuset value for the camera background,don't change the oder
     write /dev/cpuset/camera-background/background/cpus 0-2
