@@ -85,6 +85,7 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=$(PRODUCT_DEVICE)
 TARGET_KERNEL_ADDITIONAL_FLAGS += LD=$(shell pwd)/prebuilts/clang/host/linux-x86/clang-prelude/bin/ld.lld
 TARGET_KERNEL_ADDITIONAL_FLAGS += AR=$(shell pwd)/prebuilts/clang/host/linux-x86/clang-prelude/bin/llvm-ar
+TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=$(PRODUCT_DEVICE)
 TARGET_KERNEL_CLANG_COMPILE := true
 
 BOARD_KERNEL_CMDLINE += androidboot.console=ttyMSM0
