@@ -12,3 +12,6 @@ telephony.active_modems.max_count=2
 # WFD
 persist.debug.wfd.enable=1
 vendor.wfdservice64=enable
+
+# Bluetooth
+bluetooth.device.class_of_device=90,2,12
