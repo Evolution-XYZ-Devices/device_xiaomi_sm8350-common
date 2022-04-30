@@ -8,3 +8,7 @@
  on boot
     chown system system /sys/class/qcom-battery/reverse_chg_mode
     chmod 0644 /sys/class/qcom-battery/reverse_chg_mode
+
+# Touch
+on boot
+    chown system system /sys/devices/virtual/touch/touch_dev/bump_sample_rate
