@@ -67,6 +67,12 @@ on init
     chown system system /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
     chmod 0660 /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
 
+    # Fingerprint
+    chmod 0666 /dev/goodix_fp
+    chown system system /dev/goodix_fp
+    chmod 0664 /dev/fortsense_fp
+    chown system system /dev/fortsense_fp
+
 on early-fs
     start vold
     exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules/ cnss2
@@ -106,6 +112,13 @@ on post-fs-data
     mkdir /data/vendor/wlan_logs 0777 root shell
     mkdir /data/vendor/nfc 0777 nfc nfc
 
+    # Create fingerprint related directory
+    mkdir /data/vendor/fpc 0770 system system
+    mkdir /data/vendor/goodix 0770 system system
+    mkdir /data/vendor/fpdump 0770 system system
+    mkdir /data/vendor/fortsense 0770 system system
+    mkdir /mnt/vendor/persist/goodix 0770 system system
+    mkdir /mnt/vendor/persist/fpc 0770 system system
 on early-boot
     # Enable WLAN cold boot calibration
     write /sys/devices/platform/soc/b0000000.qcom,cnss-qca6490/fs_ready 1
@@ -155,6 +168,34 @@ on boot
     chown system /sys/devices/system/cpu/hyp_core_ctl/hcc_min_freq
 
     write /sys/block/sda/queue/wbt_lat_usec 75000
+
+    # Set fingerprint related permissions
+    chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/fod_hbm
+    chown system system /sys/devices/platform/soc/soc:qcom,dsi-display-primary/fod_ui
+    chown system system /sys/devices/virtual/touch/tp_dev/fod_status
+
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/irq
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/irq_enable
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/wakeup_enable
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/hw_reset
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/device_prepare
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/fingerdown_wait
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/vendor
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/request_vreg
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/simulate_irq
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/finger_irq
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/request_vreg
+    chown system system /sys/bus/platform/devices/soc:fingerprint_fpc/power_cfg
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/irq
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/wakeup_enable
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/hw_reset
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/device_prepare
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/vendor
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/request_vreg
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/simulate_irq
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/finger_irq
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/request_vreg
+    chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/power_cfg
 
 on init && property:ro.boot.mode=charger
     mount_all /vendor/etc/charger_fstab.qcom --early
