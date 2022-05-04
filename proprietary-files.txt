@@ -33,6 +33,9 @@ vendor/lib/libspkrprot.so
 vendor/lib/libssrec.so
 vendor/lib/libvideoNS.so
 
+# Audio (XLOG) - from star MIUI 22.4.29
+vendor/lib/vndk/libxlog.so|c4fb219425f071dd480a0126fe223ea3650997d0
+
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
