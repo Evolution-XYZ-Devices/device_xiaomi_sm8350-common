@@ -878,6 +878,10 @@ vendor/lib64/libGPTEE_vendor.so
 vendor/lib64/libQTEEConnector_vendor.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 
+# QTEE - from LA.UM.9.14.r1-18400.02-LAHAINA.QSSI12.0
+vendor/lib/libQTEEConnector_listener.so|750974e3abd6a7c499d89b9a6b470add234e29ea
+vendor/lib64/libQTEEConnector_listener.so|8d25d1ac1374673ec2c1c5356f5b04e500d06af4
+
 # VPP
 vendor/bin/hw/qconfigservice
 vendor/bin/vppservice
