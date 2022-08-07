@@ -11,6 +11,8 @@ system_ext/etc/permissions/audiosphere.xml
 system_ext/framework/audiosphere.jar
 vendor/lib/soundfx/libasphere.so
 vendor/lib/soundfx/libshoebox.so
+vendor/lib/soundfx/libmisoundfx.so
+vendor/lib64/soundfx/libmisoundfx.so
 
 # Audio HAL
 vendor/lib/hw/audio.primary.lahaina.so
