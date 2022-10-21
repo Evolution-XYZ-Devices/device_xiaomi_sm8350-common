@@ -384,6 +384,10 @@ vendor/firmware/a660_zap.b02
 vendor/firmware/a660_zap.elf
 vendor/firmware/a660_zap.mdt
 
+# Health
+vendor/lib/hw/android.hardware.health@2.0-impl-2.1-qti.so
+vendor/lib64/hw/android.hardware.health@2.0-impl-2.1-qti.so
+
 # IFAA Service
 -vendor/app/IFAAService/IFAAService.apk:vendor/app/IFAAServiceXiaomism8350/IFAAServiceXiaomism8350.apk
 
