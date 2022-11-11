@@ -373,5 +373,6 @@
         <item>org.telegram.messenger</item>
         <item>com.microsoft.teams</item>
         <item>com.discord</item>
+        <item>us.zoom.videomeetings</item>
     </string-array>
 </resources>
