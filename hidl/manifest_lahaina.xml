@@ -131,6 +131,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
            <instance>default</instance>
        </interface>
     </hal>
+    <hal format="hidl">
+        <name>android.hardware.health</name>
+        <transport>hwbinder</transport>
+        <fqname>@2.1::IHealth/default</fqname>
+    </hal>
     <!-- NFC HAL service -->
     <hal format="hidl">
         <name>android.hardware.nfc</name>
