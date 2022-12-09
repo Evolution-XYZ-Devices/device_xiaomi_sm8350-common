@@ -374,5 +374,7 @@
         <item>com.microsoft.teams</item>
         <item>com.discord</item>
         <item>us.zoom.videomeetings</item>
+        <item>org.thunderdog.challegram</item>
+        <item>tw.nekomimi.nekogram</item>
     </string-array>
 </resources>
