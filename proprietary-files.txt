@@ -386,6 +386,12 @@ vendor/firmware/a660_zap.b02
 vendor/firmware/a660_zap.elf
 vendor/firmware/a660_zap.mdt
 
+# HotwordEnrollment - from V13.0.13.0.SKAMIXM
+-product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk|b3c17357a9a6aaf796e9181742ba4865bcfcb517
+-product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk|e248de691af3b72630b4b062a46e302d82c7ec45
+system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml|563a58554d9c0dd0608552b644fbf74519a447bb
+system_ext/framework/com.android.hotwordenrollment.common.util.jar|c764b636e0be426a66be09dd08ab9c1921327ef0
+
 # Health
 vendor/lib/hw/android.hardware.health@2.0-impl-2.1-qti.so
 vendor/lib64/hw/android.hardware.health@2.0-impl-2.1-qti.so
