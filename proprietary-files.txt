@@ -1,4 +1,4 @@
-# All unpinned blobs below are extracted from star's MIUI V13.0.13.0.SKACNXM
+# All unpinned blobs below are extracted from miui_STAR_V14.0.6.0.TKACNXM
 
 # ADSP
 vendor/bin/adsprpcd
@@ -18,6 +18,8 @@ vendor/lib64/soundfx/libmisoundfx.so
 vendor/lib/hw/audio.primary.lahaina.so
 vendor/lib/liba2dpoffload.so
 vendor/lib/libadm.so
+vendor/lib/libaudioalsa.so
+vendor/lib/libaudiocloudctrl.so
 vendor/lib/libaudioconfigstore.so
 vendor/lib/libaudio_log_utils.so
 vendor/lib/libaudioparsers.so
@@ -34,6 +36,13 @@ vendor/lib/libsndmonitor.so
 vendor/lib/libspkrprot.so
 vendor/lib/libssrec.so
 vendor/lib/libvideoNS.so
+vendor/lib64/hw/audio.primary.lahaina.so
+vendor/lib64/libaudioalsa.so
+vendor/lib64/libaudiocloudctrl.so
+vendor/lib64/libaudioconfigstore.so
+vendor/lib64/libaudio_log_utils.so
+vendor/lib64/libaudioparsers.so
+vendor/lib64/libaudioroute_ext.so
 
 # Audio (XLOG) - from star MIUI 22.4.29
 vendor/lib/vndk/libxlog.so|c4fb219425f071dd480a0126fe223ea3650997d0
