@@ -34,6 +34,8 @@ function configure_zram_parameters() {
 	MemTotalStr=`cat /proc/meminfo | grep MemTotal`
 	MemTotal=${MemTotalStr:16:8}
 
+	low_ram=`getprop ro.config.low_ram`
+
 	# Zram disk - 75% for Go and < 2GB devices .
 	# For >2GB Non-Go devices, size = 50% of RAM size. Limit the size to 4GB.
 	# And enable lz4 zram compression for Go targets.
@@ -51,7 +53,9 @@ function configure_zram_parameters() {
 		let zRamSizeMB=4096
 	fi
 
-	echo lz4 > /sys/block/zram0/comp_algorithm
+	if [ "$low_ram" == "true" ]; then
+		echo lz4 > /sys/block/zram0/comp_algorithm
+	fi
 
 	if [ -f /sys/block/zram0/disksize ]; then
 		if [ -f /sys/block/zram0/use_dedup ]; then
@@ -133,7 +137,7 @@ function configure_memory_parameters() {
 	fi
 
 	echo $LimitSize > /dev/memcg/camera/provider/memory.soft_limit_in_bytes
-
+	
 	if [ $MemTotal -le 8388608 ]; then
 		echo 0 > /proc/sys/vm/watermark_boost_factor
 	fi
@@ -187,9 +191,14 @@ echo 10 10 10 10 10 10 10 95 > /proc/sys/kernel/sched_coloc_busy_hyst_cpu_busy_p
 echo 325 > /proc/sys/kernel/walt_low_latency_task_threshold
 
 # cpuset parameters
-echo 0-3 > /dev/cpuset/background/cpus
+echo 0-2 > /dev/cpuset/background/cpus
 echo 0-3 > /dev/cpuset/system-background/cpus
-echo 0-6 > /dev/cpuset/foreground/cpus
+echo " " > /dev/cpuset/foreground/boost/cpus
+echo 0-2,4-7 > /dev/cpuset/foreground/cpus
+echo 0-7 > /dev/cpuset/top-app/cpus
+
+# Turn off scheduler boost at the end
+echo 0 > /proc/sys/kernel/sched_boost
 
 # configure governor settings for silver cluster
 echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
@@ -210,6 +219,10 @@ else
 	echo "0:1305600" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
 fi
 echo 120 > /sys/devices/system/cpu/cpu_boost/input_boost_ms
+
+# configure powerkey boost settings
+echo "0:1804800 1:0 2:0 3:0 4:2419200 5:0 6:0 7:2841600" > /sys/devices/system/cpu/cpu_boost/powerkey_input_boost_freq
+echo 400 > /sys/devices/system/cpu/cpu_boost/powerkey_input_boost_ms
 
 # configure governor settings for gold cluster
 echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
@@ -340,7 +353,9 @@ do
 	    echo 50 > $qoslat/mem_latency/ratio_ceil
 	done
 done
+echo N > /sys/module/lpm_levels/parameters/sleep_disabled
 echo deep > /sys/power/mem_sleep
+
 configure_memory_parameters
 
 # Let kernel know our image version/variant/crm_version
@@ -358,5 +373,17 @@ if [ -f /sys/devices/soc0/select_image ]; then
 	echo $image_variant > /sys/devices/soc0/image_variant
 	echo $oem_version > /sys/devices/soc0/image_crm_version
 fi
+
+# Change console log level as per console config property
+console_config=`getprop persist.vendor.console.silent.config`
+case "$console_config" in
+	"1")
+		echo "Enable console config to $console_config"
+		echo 0 > /proc/sys/kernel/printk
+	;;
+	*)
+		echo "Enable console config to $console_config"
+	;;
+esac
 
 setprop vendor.post_boot.parsed 1

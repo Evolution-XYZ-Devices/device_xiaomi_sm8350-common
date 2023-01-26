@@ -1,5 +1,5 @@
 #=============================================================================
-# Copyright (c) 2020 Qualcomm Technologies, Inc.
+# Copyright (c) 2020-2021 Qualcomm Technologies, Inc.
 # All Rights Reserved.
 # Confidential and Proprietary - Qualcomm Technologies, Inc.
 #
@@ -130,7 +130,7 @@ function configure_memory_parameters() {
         # Disable wsf  beacause we are using efk.
         # wsf Range : 1..1000. So set to bare minimum value 1.
         echo 1 > /proc/sys/vm/watermark_scale_factor
-
+	
 	MemTotalStr=`cat /proc/meminfo | grep MemTotal`
 	MemTotal=${MemTotalStr:16:8}
 	if [ $MemTotal -le 8388608 ]; then
@@ -147,6 +147,7 @@ ddr_type4="07"
 ddr_type5="08"
 
 # Core control parameters for gold
+
 echo 2 > /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
 echo 60 > /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres
 echo 30 > /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres
@@ -184,8 +185,20 @@ echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
 echo 0 > /proc/sys/kernel/sched_coloc_busy_hysteresis_enable_cpus
 
 # cpuset parameters
-echo 0-3 > /dev/cpuset/background/cpus
+echo 0-2 > /dev/cpuset/background/cpus
 echo 0-3 > /dev/cpuset/system-background/cpus
+echo " " > /dev/cpuset/foreground/boost/cpus
+echo 0-2,4-7 > /dev/cpuset/foreground/cpus
+echo 0-7 > /dev/cpuset/top-app/cpus
+
+#io limit
+echo 11 > /dev/cpuset/top-app/types
+echo 1 > /dev/cpuset/background/types
+echo 9 > /dev/cpuset/foreground/types
+echo 11 > /proc/sys/kernel/mi_iolimit
+
+# Turn off scheduler boost at the end
+echo 0 > /proc/sys/kernel/sched_boost
 
 # configure governor settings for silver cluster
 echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
@@ -202,6 +215,9 @@ else
 	echo "0:1305600" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
 fi
 echo 120 > /sys/devices/system/cpu/cpu_boost/input_boost_ms
+
+echo "0:1900800 1:0 2:0 3:0 4:2208000 5:0 6:0 7:2400000" > /sys/devices/system/cpu/cpu_boost/powerkey_input_boost_freq
+echo 400 > /sys/devices/system/cpu/cpu_boost/powerkey_input_boost_ms
 
 # configure governor settings for gold cluster
 echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
@@ -357,7 +373,8 @@ do
 	done
 done
 
-# set s2idle as default suspend mode
+#Enable sleep and set s2idle as default suspend mode
+echo N > /sys/module/lpm_levels/parameters/sleep_disabled
 echo s2idle > /sys/power/mem_sleep
 
 configure_memory_parameters
@@ -377,5 +394,17 @@ if [ -f /sys/devices/soc0/select_image ]; then
 	echo $image_variant > /sys/devices/soc0/image_variant
 	echo $oem_version > /sys/devices/soc0/image_crm_version
 fi
+
+# Change console log level as per console config property
+console_config=`getprop persist.console.silent.config`
+case "$console_config" in
+	"1")
+		echo "Enable console config to $console_config"
+		echo 0 > /proc/sys/kernel/printk
+	;;
+	*)
+		echo "Enable console config to $console_config"
+	;;
+esac
 
 setprop vendor.post_boot.parsed 1
