@@ -117,6 +117,8 @@ on boot
     chown system system /sys/class/thermal/thermal_message/balance_mode
     chown system system /sys/class/thermal/thermal_message/charger_temp
     chown system system /sys/devices/virtual/touch/tp_dev/double_tap
+    chown cameraserver cameraserver /sys/class/thermal/thermal_message/flash_state
+
 
     # Set xiaomi touch permissions
     chown system system /dev/xiaomi-touch
@@ -138,6 +140,17 @@ on boot
 
     write /dev/cpuset/audio-app/cpus 1-2
 
+    # init the  cpuset value for the camera background,don't change the oder
+    write /dev/cpuset/camera-background/background/cpus 0-2
+    write /dev/cpuset/camera-background/cpus 0-3
+    # Add a cpuset for the camera daemon
+    # We want all cores for camera
+    mkdir /dev/cpuset/camera-daemon
+    write /dev/cpuset/camera-daemon/cpus 0-7
+    write /dev/cpuset/camera-daemon/mems 0
+    chown cameraserver cameraserver /dev/cpuset/camera-daemon
+    chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
+    chmod 0660 /dev/cpuset/camera-daemon/tasks
     chown system /sys/devices/system/cpu/hyp_core_ctl/enable
     chown system /sys/devices/system/cpu/hyp_core_ctl/hcc_min_freq
 
