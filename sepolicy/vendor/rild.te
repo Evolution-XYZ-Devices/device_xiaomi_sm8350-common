@@ -1,0 +1,2 @@
+# Serial number
+set_prop(rild, vendor_sno_prop)
