@@ -81,3 +81,6 @@
 /vendor/bin/nv_mac                             u:object_r:vendor_wcnss_service_exec:s0
 /data/vendor/mac_addr(/.*)?                    u:object_r:vendor_wifi_vendor_data_file:s0
 /data/vendor/wlan_logs(/.*)?                   u:object_r:vendor_wifi_vendor_data_file:s0
+
+# Label discard_max_bytes in /data partition
+/sys/devices/platform/soc/1d84000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/queue/discard_max_bytes u:object_r:vendor_sysfs_mmc_host:s0
