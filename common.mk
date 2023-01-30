@@ -28,41 +28,22 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@6.0-impl \
-    android.hardware.audio.effect@6.0-impl \
-    android.hardware.audio.service \
-    android.hardware.soundtrigger@2.3-impl
-
-PRODUCT_PACKAGES += \
-    audio.primary.lahaina \
-    audio.r_submix.default \
-    audio.usb.default
-
-PRODUCT_PACKAGES += \
-    audioadsprpcd \
-    liba2dpoffload \
-    libaudiopreprocessing \
-    libaudio-resampler \
-    libbatterylistener \
-    libbundlewrapper \
-    libcirrusspkrprot \
-    libcomprcapture \
-    libdownmix \
-    libdynproc \
-    libeffectproxy \
-    libexthwplugin \
-    libhdmiedid \
-    libhfp \
-    libldnhncr \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libreverbwrapper \
-    libsndmonitor \
-    libspkrprot \
-    libtinycompress \
-    libvisualizer \
     libvolumelistener
+
+PRODUCT_PACKAGES += \
+    audioadsprpcd \
+    audio.r_submix.default \
+    audio.usb.default \
+    libtinycompress
+
+PRODUCT_PACKAGES += \
+    android.hardware.audio@6.0-impl:32 \
+    android.hardware.audio.effect@6.0-impl:32 \
+    android.hardware.audio.service \
+    android.hardware.soundtrigger@2.3-impl
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_configuration_a2dp_offload_disabled.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration_a2dp_offload_disabled.xml \
