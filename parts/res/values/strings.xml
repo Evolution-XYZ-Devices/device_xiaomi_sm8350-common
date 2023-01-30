@@ -15,7 +15,6 @@
      limitations under the License.
 -->
 <resources>
-
     <!-- Dirac settings: Headset types -->
     <string name="dirac_headset_ear_four">Mi Quadruple Driver Earphones</string>
     <string name="dirac_headset_piston_typec">Mi In-Ear Headphones (Type-C)</string>
