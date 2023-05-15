@@ -175,11 +175,6 @@ SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
-# Soong
-SOONG_CONFIG_NAMESPACES += xiaomiSm8350Vars
-SOONG_CONFIG_xiaomiSm8350Vars += vibrator_use_effect_stream
-SOONG_CONFIG_xiaomiSm8350Vars_vibrator_use_effect_stream ?= false
-
 # Touch
 SOONG_CONFIG_NAMESPACES += XIAOMI_TOUCH
 SOONG_CONFIG_XIAOMI_TOUCH := HIGH_TOUCH_POLLING_PATH
