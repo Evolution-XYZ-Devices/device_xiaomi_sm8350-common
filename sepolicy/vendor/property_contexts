@@ -28,3 +28,6 @@ persist.vendor.sys.provision.status     u:object_r:vendor_tee_listener_prop:s0
 
 # Thermal
 vendor.sys.thermal.                             u:object_r:vendor_thermal_normal_prop:s0
+
+# Fastcharge HAL
+persist.vendor.sec.fastchg_enabled              u:object_r:vendor_fastcharge_prop:s0
