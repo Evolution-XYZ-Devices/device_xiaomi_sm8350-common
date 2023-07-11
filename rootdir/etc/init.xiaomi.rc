@@ -12,3 +12,8 @@
 # Touch
 on boot
     chown system system /sys/devices/virtual/touch/touch_dev/bump_sample_rate
+    
+# Fast Charge
+on boot
+    chown system system /sys/class/qcom-battery/restrict_chg
+    chmod 0666 /sys/class/qcom-battery/restrict_chg
