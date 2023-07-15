@@ -67,4 +67,7 @@
     <string name="config_batCurCap">/sys/class/power_supply/battery/charge_counter</string>
     <string name="config_batDesCap">/sys/class/power_supply/battery/charge_full_design</string>
     <string name="config_batChargeCycle">/sys/class/power_supply/battery/cycle_count</string>
+
+    <!-- Whether to enable Lineage Fast Charge Preference -->
+    <bool name="config_lineageFastChargeSupported">true</bool>
 </resources>
