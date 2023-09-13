@@ -27,7 +27,7 @@
     <!-- Path to fast charging status file to detect whether an oem fast charger is active -->
     <string name="config_oemFastChargerStatusPath" translatable="false">/sys/class/qcom-battery/fastchg_mode</string>
 
-    <!-- Expected value from fast charging status file  -->
+    <!-- Expected value from fast charging status file -->
     <string name="config_oemFastChargerStatusValue" translatable="false">1</string>
 
     <!-- Shows the required view for Screen OFF FOD -->
@@ -48,4 +48,7 @@
     <!-- Defines the sysfs attribute path used by the device
          to enable/disable DC dimming. -->
     <string name="config_deviceDcDimmingSysfsNode">/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dimlayer_exposure</string>
+
+    <!-- Whether to enable Lineage Health Service -->
+    <bool name="config_lineageHealthSupported">true</bool>
 </resources>
