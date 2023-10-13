@@ -40,5 +40,4 @@
     <hidden-api-whitelisted-app package="com.qualcomm.qcrilmsgtunnel" />
 
     <hidden-api-whitelisted-app package="com.android.bluetooth" />
-    <hidden-api-whitelisted-app package="com.qualcomm.wfd.service" />
 </config>
