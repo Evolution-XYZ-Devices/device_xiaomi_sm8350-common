@@ -448,6 +448,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     CarrierConfigOverlay \
     libjson \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat \
     librmnetctl
 
 # Sensors
