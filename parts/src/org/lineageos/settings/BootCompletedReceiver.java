@@ -25,6 +25,7 @@ import android.os.SystemProperties;
 import android.util.Log;
 import androidx.preference.PreferenceManager;
 
+import org.lineageos.settings.dirac.DiracUtils;
 import org.lineageos.settings.doze.DozeUtils;
 import org.lineageos.settings.thermal.ThermalUtils;
 import org.lineageos.settings.refreshrate.RefreshUtils;
@@ -39,14 +40,30 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, Intent intent) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-    
+
         if (DEBUG)
             Log.d(TAG, "Received boot completed intent");
+
+        // Dirac
+        try {
+            DiracUtils.getInstance(context);
+        } catch (Exception e) {
+            Log.d(TAG, "Dirac is not present in system");
+        }
+
+        // Doze
         DozeUtils.onBootCompleted(context);
-        ThermalUtils.startService(context);
+
+        // Refresh Rate
         RefreshUtils.initialize(context);
+
+        // Thermal Profiles
+        ThermalUtils.startService(context);
+
+        // FileUtils
         FileUtils.enableService(context);
-        
+
+        // DC Dimming
         boolean dcDimmingEnabled = sharedPrefs.getBoolean(DC_DIMMING_ENABLE_KEY, false);
         FileUtils.writeLine(DC_DIMMING_NODE, dcDimmingEnabled ? "1" : "0");
     }
