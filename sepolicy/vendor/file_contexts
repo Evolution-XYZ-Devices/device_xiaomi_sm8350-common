@@ -97,3 +97,6 @@
 
 # Label discard_max_bytes in /data partition
 /sys/devices/platform/soc/1d84000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/queue/discard_max_bytes u:object_r:vendor_sysfs_mmc_host:s0
+
+# Fastcharge HAL
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.fastcharge@[0-9]\.[0-9]-service\.xiaomi_sm8350          u:object_r:hal_lineage_fastcharge_default_exec:s0
