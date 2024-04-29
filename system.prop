@@ -5,8 +5,7 @@ vendor.bluetooth.soc=hastings
 persist.vendor.cne.feature=1
 
 # Graphics
-debug.sf.disable_backpressure=1
-debug.sf.enable_hwc_vds=1
+debug.sf.enable_hwc_vds=0
 
 # IMS
 persist.dbg.volte_avail_ovr=1
@@ -38,8 +37,10 @@ ro.vendor.qti.sys.fw.bservice_enable=true
 DEVICE_PROVISIONED=1
 ril.subscription.types=NV,RUIM
 
+# Radio VoNR Calling
+persist.radio.is_vonr_enabled_0=true
+persist.radio.is_vonr_enabled_1=true
+persist.vendor.vonr_setting_support=1
+
 # Sensors
 persist.vendor.sensors.enable.mag_filter=true
-
-# WFD
-persist.debug.wfd.enable=1

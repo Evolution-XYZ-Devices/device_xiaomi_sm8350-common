@@ -90,8 +90,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <name>Isigma_miracast</name>
             <instance>sigmahal</instance>
         </interface>
-   </hal>
-      <hal format="hidl" optional="true">
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.qccsyshal</name>
         <transport>hwbinder</transport>
         <version>1.0</version>

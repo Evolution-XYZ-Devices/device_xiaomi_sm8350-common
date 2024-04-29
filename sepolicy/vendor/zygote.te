@@ -1,0 +1,1 @@
+allow zygote adsprpcd_file:dir { search };

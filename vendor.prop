@@ -24,6 +24,10 @@ ro.audio.monitorRotation=true
 ro.vendor.audio.scenario.support=true
 ro.vendor.audio.sdk.fluencetype=fluence
 ro.vendor.audio.sdk.ssr=false
+ro.vendor.audio.sfx.earadj=true
+ro.vendor.audio.sfx.harmankardon=true
+ro.vendor.audio.sfx.scenario=true
+ro.vendor.audio.soundfx.type=mi
 ro.vendor.audio.soundfx.usb=true
 ro.vendor.audio.soundtrigger.adjconf=true
 ro.vendor.audio.soundtrigger.appdefine.cnn.level=45
@@ -161,12 +165,6 @@ persist.vendor.dpm.feature=1
 persist.vendor.dpm.idletimer.mode=default
 persist.vendor.dpm.nsrm.bkg.evt=3955
 persist.vendor.dpmhalservice.enable=1
-
-# FRP
-ro.frp.pst=/dev/block/bootdevice/by-name/frp
-
-# FUSE passthrough
-persist.sys.fuse.passthrough.enable=true
 
 # Gatekeeper
 vendor.gatekeeper.disable_spu=true

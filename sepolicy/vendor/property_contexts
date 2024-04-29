@@ -1,4 +1,9 @@
+# Aware
+ro.vendor.aware_available          u:object_r:vendor_aware_available_prop:s0
+
 # Camera
+persist.camera.          u:object_r:vendor_camera_prop:s0
+persist.vendor.camera    u:object_r:vendor_camera_prop:s0
 vendor.camera.sensor.    u:object_r:vendor_camera_sensor_prop:s0
 ro.boot.camera.config    u:object_r:vendor_camera_sensor_prop:s0
 
@@ -8,6 +13,21 @@ persist.vendor.sys.fp.info    u:object_r:vendor_fp_info_prop:s0
 persist.vendor.sys.fp.uid    u:object_r:vendor_fp_info_prop:s0
 ro.hardware.fp.udfps    u:object_r:vendor_fp_prop:s0
 
+# IMEI
+ro.vendor.oem.imei                               u:object_r:vendor_deviceid_prop:s0
+ro.vendor.oem.imei1                              u:object_r:vendor_deviceid_prop:s0
+ro.vendor.oem.imei2                               u:object_r:vendor_deviceid_prop:s0
+
+# Serial number
+ro.vendor.oem.sno                               u:object_r:vendor_sno_prop:s0
+ro.vendor.oem.psno                              u:object_r:vendor_sno_prop:s0
+
 # Mlipay
 persist.vendor.sys.pay.                 u:object_r:vendor_mlipay_prop:s0
 persist.vendor.sys.provision.status     u:object_r:vendor_mlipay_prop:s0
+
+# Thermal
+vendor.sys.thermal.                             u:object_r:vendor_thermal_normal_prop:s0
+
+# Touchfeature
+vendor.panel.                                   u:object_r:vendor_panel_info_prop:s0
